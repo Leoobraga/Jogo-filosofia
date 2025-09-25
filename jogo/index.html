@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz de Filosofia — Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="img/filosofia.ico" type="image/x-icon">
+</head>
+<body>
+
+  <main class="container">
+    <header class="header">
+      <h1 class="title">A Ciência Medieval </h1>
+      <div class="score-mini">
+        <span id="current-score">0</span>/<span id="total-questions">0</span>
+      </div>
+    </header>
+
+<section class="card" id="quiz-card" aria-live="polite">
+  <div class="progress-wrap" aria-hidden="false">
+    <div id="progress-bar" class="progress-bar"></div>
+    <div id="progress-avatar">🧍‍♂️</div> <!-- boneco aqui -->
+  </div>
+
+  <div id="question-area" class="question-area">
+    <h2 id="question-text">Carregando...</h2>
+    <div id="options" class="options"></div>
+  </div>
+
+  <div class="controls">
+    <button id="next-btn" class="btn" disabled>Próxima</button>
+  </div>
+</section>
+
+
+    <section id="result-screen" class="card result hidden">
+      <h2>Resultado</h2>
+      <p id="result-text">Você acertou <span id="correct-count">0</span> de <span id="total">0</span> perguntas.</p>
+      <button id="restart-btn" class="btn primary">Jogar novamente</button>
+    </section>
+  </main>
+
+
+
+  <!-- Floating help button (aparece após 3 acertos) -->
+  <button id="help-btn" class="help-btn hidden" title="Ajuda disponível">💡</button>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
