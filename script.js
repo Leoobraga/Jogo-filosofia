@@ -6,7 +6,7 @@
   const OBFUSCATION_OFFSET = 7;
 
   const QUESTIONS = [
-    { q: "Quem disse: 'Penso, logo existo'?", options: ["Aristóteles", "Descartes", "Nietzsche", "Platão"], correctObf: btoa(String(1 + OBFUSCATION_OFFSET)), hint: "Racionalista francês do século XVII." },
+    { q: "Se voce tivesse que entrar escondido na biblioteca de noite, como faria pra nao ser ouvindo andando pelos corredores escuros?", options: ["Andaria descalço, tenatndo evitar qualquer rangido das tabuas de madeira", "levaria uma vela apagada e usuario so o tato, confiando no sliencio absoluto ", "imitaria o ritmo das patrulhas, adando apenas quando os monges tambem fazem barulho", "arriscando correr rapido no escuro, confiando em chegar antes que notam"], correctObf: btoa(String(1 + OBFUSCATION_OFFSET)), hint: "Racionalista francês do século XVII." },
     { q: "Qual filósofo escreveu 'A República'?", options: ["Sócrates", "Platão", "Espinosa", "Hobbes"], correctObf: btoa(String(1 + OBFUSCATION_OFFSET)), hint: "Aluno de Sócrates, idealizou formas de Estado." },
     { q: "Quem é conhecido pelo conceito 'vontade de poder'?", options: ["Kant", "Hegel", "Nietzsche", "Locke"], correctObf: btoa(String(2 + OBFUSCATION_OFFSET)), hint: "Filósofo alemão que criticou a moral tradicional." },
     { q: "O que é 'dúvida metódica'?", options: ["Dúvida sem propósito", "Técnica científica", "Método de investigação que questiona certezas", "Crença religiosa"], correctObf: btoa(String(2 + OBFUSCATION_OFFSET)), hint: "Processo usado por Descartes para buscar certeza." },
