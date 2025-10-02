@@ -13,37 +13,46 @@
 
   <main class="container">
     <header class="header">
-      <h1 class="title">A Ciência Medieval </h1>
+      <h1 class="title">A Ciência Medieval</h1>
       <div class="score-mini">
         <span id="current-score">0</span>/<span id="total-questions">0</span>
       </div>
     </header>
 
-<section class="card" id="quiz-card" aria-live="polite">
-  <div class="progress-wrap" aria-hidden="false">
-    <div id="progress-bar" class="progress-bar"></div>
-    <div id="progress-avatar">🧍‍♂️</div> <!-- boneco aqui -->
-  </div>
+    <!-- TELA INICIAL -->
+    <section id="start-screen" class="card">
+      <h2>📜 Aventura no Mosteiro</h2>
+      <p>
+        Você é um jovem aprendiz em um mosteiro medieval.<br>
+        Deve explorar a biblioteca escondida e aprender os conhecimentos científicos da época sem ser pego pelos monges conservadores.
+      </p>
+      <button id="start-btn" class="btn primary">Começar a jogar</button>
+    </section>
 
-  <div id="question-area" class="question-area">
-    <h2 id="question-text">Carregando...</h2>
-    <div id="options" class="options"></div>
-  </div>
+    <!-- QUIZ (começa escondido) -->
+    <section class="card hidden" id="quiz-card" aria-live="polite">
+      <div class="progress-wrap" aria-hidden="false">
+        <div id="progress-bar" class="progress-bar"></div>
+        <div id="progress-avatar">🧍‍♂️</div> <!-- boneco aqui -->
+      </div>
 
-  <div class="controls">
-    <button id="next-btn" class="btn" disabled>Próxima</button>
-  </div>
-</section>
+      <div id="question-area" class="question-area">
+        <h2 id="question-text">Carregando...</h2>
+        <div id="options" class="options"></div>
+      </div>
 
+      <div class="controls">
+        <button id="next-btn" class="btn" disabled>Próxima</button>
+      </div>
+    </section>
 
+    <!-- RESULTADO -->
     <section id="result-screen" class="card result hidden">
       <h2>Resultado</h2>
       <p id="result-text">Você acertou <span id="correct-count">0</span> de <span id="total">0</span> perguntas.</p>
       <button id="restart-btn" class="btn primary">Jogar novamente</button>
     </section>
   </main>
-
-
 
   <!-- Floating help button (aparece após 3 acertos) -->
   <button id="help-btn" class="help-btn hidden" title="Ajuda disponível">💡</button>

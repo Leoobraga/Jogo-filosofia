@@ -1,22 +1,33 @@
 /* script.js
  - Quiz responsivo com trava de seleção, progresso, ajuda flutuante e boneco no progresso animado.
 */
+const startScreen = document.getElementById('start-screen');
+const startBtn = document.getElementById('start-btn');
+const quizCard = document.getElementById('quiz-card');
+
+startBtn.addEventListener('click', () => {
+  startScreen.classList.add('hidden');   // esconde a tela inicial
+  quizCard.classList.remove('hidden');   // mostra o quiz
+});
 
 (() => {
   const OBFUSCATION_OFFSET = 7;
 
   const QUESTIONS = [
+
     { q: "Se você tivesse que entrar escondido na biblioteca de noite, como faria pra não ser ouvido andando pelos corredores escuros? ", options: [" Andaria descalço, tentando evitar qualquer rangido das tábuas de madeira.", "Imitaria o ritmo das patrulhas, andando apenas quando os monges também fazem barulho.",  "Levaria uma vela apagada e usaria só o tato, confiando no silêncio absoluto.", " Arriscaria correr rápido no escuro, confiando em chegar antes que notem."], correctObf: btoa(String(1 + OBFUSCATION_OFFSET)), hint: "Imitar os movimentos dos monges pode ser uma boa ideia." },
-    { q: " Imagina que você achou um livro estranho sobre alquimia… você abriria e estudaria, mesmo sabendo que os monges podem te pegar?", options: ["Sim, o conhecimento vale qualquer risco.", " Esconderia o livro para estudar depois em segredo.", "Não, melhor deixar onde está e não chamar atenção.", "Só daria uma olhada rápida e guardaria de novo"], correctObf: btoa(String(1 + OBFUSCATION_OFFSET)), hint: "A mekhor opção é esconder o livro" },
+    { q: " Imagina que você achou um livro estranho sobre alquimia… você abriria e estudaria, mesmo sabendo que os monges podem te pegar?", options: ["Sim, o conhecimento vale qualquer risco.", " Esconderia o livro para estudar depois em segredo.", "Não, melhor deixar onde está e não chamar atenção.", "Só daria uma olhada rápida e guardaria de novo"], correctObf: btoa(String(1 + OBFUSCATION_OFFSET)), hint: "A melhor opção é esconder o livro" },
     { q: "Se um monge te flagrasse com um livro proibido, o que você falaria na hora pra se safar?", options: ["Que apenas estava curioso, mas não entendi nada do conteúdo.", "Que achei o livro perigoso e ia levar ao abade." , "Que estava limpando e o livro caiu por acaso em minhas mãos.", "Confessaria, mas diria que o conhecimento também é um dom de Deus."], correctObf: btoa(String(2 + OBFUSCATION_OFFSET)), hint: "Fingir algo deve ser a opção certa" },
 
     { q: "Na sua opinião, o que é mais arriscado: desafiar a fé dos monges com ideias novas ou ficar na ignorância sem aprender nada?", options: ["Ambos são arriscados, mas o equilíbrio entre fé e razão é o caminho", "Desafiar os monges — o castigo pode ser terrível.", " Ficar na ignorância — a alma fica vazia sem saber.", "Não quero arriscar nem um nem outro, prefiro viver obediente e seguro."], correctObf: btoa(String(0 + OBFUSCATION_OFFSET)), hint: "A vida é sobre ter uma filosofia..." },
     { q: " Se você descobrisse um segredo científico que poderia mudar o futuro, mas teria que guardar pra você… contaria ou ficaria calado?", options: ["Guardaria em código secreto, para que apenas os sábios do futuro pudessem decifrar.", "Revelaria apenas para alguém de confiança.", "Ficaria calado, para não ser punido e nem colocar ninguém em risco.", "Contaria, pois a verdade deve ser compartilhada."], correctObf: btoa(String(0 + OBFUSCATION_OFFSET)), hint: "Somente pessoas inteligentes devem saber..." },
-    { q: "Qual filósofo escreveu 'A República'?", options: ["Platão", "Nietzsche", "Descartes", "Epicuro"], correctObf: btoa(String(0 + OBFUSCATION_OFFSET)), hint: "Discípulo de Sócrates, acreditava no mundo das ideias." },
-    { q: "Quem disse a frase 'Só sei que nada sei'?", options: ["Aristóteles", "Kant", "Sócrates", "Montaigne"], correctObf: btoa(String(2 + OBFUSCATION_OFFSET)), hint: "Não deixou nada escrito, só conhecemos suas ideias por Platão." },
-    { q: "Qual destes filósofos ficou famoso pelo 'contrato social'?", options: ["Rousseau", "Hobbes", "Locke", "Todos os anteriores"], correctObf: btoa(String(3 + OBFUSCATION_OFFSET)), hint: "Na verdade, vários pensaram sobre isso." },
-        { q: "O que é 'dúvida metódica'?", options: ["Dúvida sem propósito", "Técnica científica", "Método de investigação que questiona certezas", "Crença religiosa"], correctObf: btoa(String(2 + OBFUSCATION_OFFSET)), hint: "Processo usado por Descartes para buscar certeza." },
-    { q: "Quem escreveu 'Assim falou Zaratustra'?", options: ["Nietzsche", "Hegel", "Comte", "Marx"], correctObf: btoa(String(0 + OBFUSCATION_OFFSET)), hint: "Filósofo alemão que criticou a moral cristã." 
+    { q: "Você encontra uma passagem escondida atrás de uma estante na biblioteca. O que faz?", options: ["Marcar discretamente o local e voltar depois, quando estiver mais seguro.", "Entrar de imediato", "Ignorar", " Chamar outro monge "], correctObf: btoa(String(0 + OBFUSCATION_OFFSET)), hint: "Há muitos monges no local.." },
+
+    { q: "Um manuscrito fala de uma fórmula para criar fogo sem lenha. O que faz?", options: ["Copiar em partes e esconder em lugares diferentes.", " Decorar tudo", " Guardar inteiro contigo", " Usar imediatamente"], correctObf: btoa(String(0 + OBFUSCATION_OFFSET)), hint: "Ser discreto é a melhor forma" },
+    { q: "Você percebe que um monge mais velho também parece saber segredos proibidos. O que faz?", options: ["Evitar totalmente ", "Contar seus segredos ", "Observar primeiro seus hábitos antes de se aproximar.", " Confrontar direto "], correctObf: btoa(String(2 + OBFUSCATION_OFFSET)), hint: "Estudar sempre é a melhor forma." },
+    { q: "A biblioteca está em chamas, e você só pode salvar um tipo de livro. Qual?", options: ["Não salvar nenhum", " O de contos", " O de fé", " O de conhecimentos únicos (ciência, alquimia)."], correctObf: btoa(String(3 + OBFUSCATION_OFFSET)), hint: "Todos são importante, mas o conhecimento é unico" },
+
+    { q: "Você encontra um símbolo estranho gravado em uma parede antiga do monastério. O que faz?", options: [" Copiar o símbolo e pesquisar em segredo depois.", "Tocar o símbolo ", " Ignorar", " Mostrar aos monges"], correctObf: btoa(String(0 + OBFUSCATION_OFFSET)), hint: "Nessa epoca tudo deve ser feito em sigilo. " 
       
     },
   ];
